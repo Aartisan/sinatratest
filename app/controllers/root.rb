@@ -1,6 +1,10 @@
 get '/' do
   p = Post.find :first
-  "Hello world! #{p.name}\n"
+  if p
+    "Hello world! #{p.name}\n"
+  else
+    "fuck test"
+  end
 end
 
 get '/post/:id' do

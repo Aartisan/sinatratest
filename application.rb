@@ -31,6 +31,7 @@ end
 # ActiveSupport::JSON::Encoding.escape_html_entities_in_json = true
 
 # initialize ActiveRecord
+require "active_record"
 ActiveRecord::Base.establish_connection YAML::load(File.open('config/database.yml'))[ENV["RACK_ENV"]]
 # ActiveRecord::Base.logger = logger
 ActiveSupport.on_load(:active_record) do
@@ -47,20 +48,20 @@ APP_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/app_conf
 # initialize memcached
 # require 'dalli'
 # require 'active_support/cache/dalli_store'
-Dalli.logger = logger
-CACHE = ActiveSupport::Cache::DalliStore.new("127.0.0.1")
+#Dalli.logger = logger
+#CACHE = ActiveSupport::Cache::DalliStore.new("127.0.0.1")
 
 # initialize ActiveRecord Cache
 # require 'second_level_cache'
-SecondLevelCache.configure do |config|
-  config.cache_store = CACHE
-  config.logger = logger
-  config.cache_key_prefix = 'domain'
-end
+#SecondLevelCache.configure do |config|
+  #config.cache_store = CACHE
+  #config.logger = logger
+  #config.cache_key_prefix = 'domain'
+#end
 
 # Set autoload directory
 %w{models controllers lib}.each do |dir|
-  Dir.glob(File.expand_path("../#{dir}", __FILE__) + '/**/*.rb').each do |file|
+  Dir.glob(File.expand_path("../app/#{dir}", __FILE__) + '/**/*.rb').each do |file|
     require file
   end
 end

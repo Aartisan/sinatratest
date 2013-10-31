@@ -1,5 +1,4 @@
 class Post < ActiveRecord::Base
-  acts_as_cached
   attr_accessible :content, :name, :title, :tags_attributes
   
   validates :name, :presence => true
