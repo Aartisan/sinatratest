@@ -1,4 +1,5 @@
-source "http://rubygems.org"
+#source "http://rubygems.org"
+source "http://ruby.taobao.org"
 
 gem 'rack'
 gem 'rake'
@@ -15,13 +16,16 @@ gem 'oj'
 #--------------------------------
 #
 #Mysql:
-gem 'mysql2'
-#gem 'activerecord', :require => 'active_record'
-gem 'activerecord'
+#       gem 'mysql2'
+#       gem 'activerecord'
 #Sqlite:
-#gem 'dm-sqlite-adapter'
-#gem 'sqlite3'
-#gem 'data_mapper'
+#       gem 'dm-sqlite-adapter'
+#       gem 'sqlite3'
+#       gem 'data_mapper'
+#mongodb
+gem 'bson'
+gem 'bson_ext'
+gem 'mongoid'
 
 #--------------------------------
 # Cache
@@ -51,8 +55,8 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', "~>2.6.0", :require => "minitest/autorun"
-  gem 'rack-test', :require => "rack/test"
-  gem 'factory_girl'
-  gem 'database_cleaner'
+  #gem 'minitest', "~>2.6.0", :require => "minitest/autorun"
+  #gem 'rack-test', :require => "rack/test"
+  #gem 'factory_girl'
+  #gem 'database_cleaner'
 end

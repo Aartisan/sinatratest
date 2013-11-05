@@ -1,9 +1,0 @@
-# check it first with http://yaml-online-parser.appspot.com/ if valid!
-development: &default
-    sinatra: 'sinatra boiler plate'
-
-test:
-    <<: *default
-
-production:
-    <<: *default
