@@ -5,6 +5,7 @@ development:
       uri: <%= ENV['MONGODB_URI_DEV'] %>/<%= ENV['MONGODB_DB_DEV'] %>
       options:
         safe: true
+
 test:
   sessions:
     default:
@@ -16,6 +17,7 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
 # disabled due parsing errors while using erb inside.
 production:
   sessions:
