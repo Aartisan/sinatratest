@@ -11,7 +11,7 @@ configure do
   set :views, File.join(File.dirname(__FILE__), 'app/views')
   #set :public, File.join(File.dirname(__FILE__), 'app/pubilc')
 
-  Mongoid.load!(File.expand_path("../config", __FILE__) + '/mongoid.yml', :development)
+  Mongoid.load!(File.expand_path("../config", __FILE__) + '/mongoid.yml', ENV['RACK_ENV'].to_sym)
 
 end
 

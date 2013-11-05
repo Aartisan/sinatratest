@@ -8,8 +8,6 @@ class Post
   MARKDOWN  = 'markdown'
   HTML      = 'html'
 
-
-
   field :title,     :type => String
   field :content,   :type => String
   field :username,  :type => String
