@@ -8,7 +8,7 @@ configure do
 end
 
 configure :production do
-end  
+end
 
 # initialize log
 require 'logger'
@@ -24,23 +24,27 @@ when "development"
 else
   logger = ::Logger.new("/dev/null")
 end
+
+
+
+
 # use Rack::CommonLogger, logger
 
 # initialize json
 # require 'active_support'
 # ActiveSupport::JSON::Encoding.escape_html_entities_in_json = true
 
-# initialize ActiveRecord
-require "active_record"
-ActiveRecord::Base.establish_connection YAML::load(File.open('config/database.yml'))[ENV["RACK_ENV"]]
-# ActiveRecord::Base.logger = logger
-ActiveSupport.on_load(:active_record) do
-  self.include_root_in_json = false
-  self.default_timezone = :local
-  self.time_zone_aware_attributes = false
-  self.logger = logger
-  # self.observers = :cacher, :garbage_collector, :forum_observer
-end
+## initialize ActiveRecord
+#require "active_record"
+#ActiveRecord::Base.establish_connection YAML::load(File.open('config/database.yml'))[ENV["RACK_ENV"]]
+## ActiveRecord::Base.logger = logger
+#ActiveSupport.on_load(:active_record) do
+  #self.include_root_in_json = false
+  #self.default_timezone = :local
+  #self.time_zone_aware_attributes = false
+  #self.logger = logger
+  ## self.observers = :cacher, :garbage_collector, :forum_observer
+#end
 
 # load project config
 APP_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/app_config.yml')[ENV["RACK_ENV"]]
@@ -54,9 +58,9 @@ APP_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/app_conf
 # initialize ActiveRecord Cache
 # require 'second_level_cache'
 #SecondLevelCache.configure do |config|
-  #config.cache_store = CACHE
-  #config.logger = logger
-  #config.cache_key_prefix = 'domain'
+#config.cache_store = CACHE
+#config.logger = logger
+#config.cache_key_prefix = 'domain'
 #end
 
 # Set autoload directory

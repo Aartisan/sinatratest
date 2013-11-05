@@ -1,0 +1,5 @@
+# check it first with http://yaml-online-parser.appspot.com/ if valid!
+site_config:
+    title: anergel
+    keywords: anergel
+    description: anergel
