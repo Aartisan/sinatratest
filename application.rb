@@ -5,6 +5,14 @@ configure do
   set :raise_errors,    development?
   set :logging,         true
   set :static,          false # your upstream server should deal with those (nginx, Apache)
+  puts '----------------------------'
+  puts File.join(File.dirname(__FILE__))
+  puts '-------------------'
+  set :views, File.join(File.dirname(__FILE__), 'app/views')
+  #set :public, File.join(File.dirname(__FILE__), 'app/pubilc')
+
+  Mongoid.load!(File.expand_path("../config", __FILE__) + '/mongoid.yml', ENV['RACK_ENV'].to_sym)
+
 end
 
 configure :production do
@@ -25,9 +33,6 @@ else
   logger = ::Logger.new("/dev/null")
 end
 
-
-
-
 # use Rack::CommonLogger, logger
 
 # initialize json
@@ -47,8 +52,8 @@ end
 #end
 
 # load project config
-APP_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/app_config.yml')[ENV["RACK_ENV"]]
-
+APP_CONFIG =      YAML.load_file(File.expand_path("../config", __FILE__) + '/app_config.yml')[ENV["RACK_ENV"]]
+DATABASE_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/mongoid.yml')[ENV["RACK_ENV"]]
 # initialize memcached
 # require 'dalli'
 # require 'active_support/cache/dalli_store'
