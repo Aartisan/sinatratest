@@ -52,7 +52,7 @@ end
 #end
 
 # load project config
-APP_CONFIG =      YAML.load_file(File.expand_path("../config", __FILE__) + '/app_config.yml')[ENV["RACK_ENV"]]
+#APP_CONFIG =      YAML.load_file(File.expand_path("../config", __FILE__) + '/app_config.yml')[ENV["RACK_ENV"]]
 DATABASE_CONFIG = YAML.load_file(File.expand_path("../config", __FILE__) + '/mongoid.yml')[ENV["RACK_ENV"]]
 # initialize memcached
 # require 'dalli'
